@@ -30,10 +30,10 @@ export function Header() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
-              <div className="text-lg font-bold tracking-tight text-foreground">
-                FORM & FUNCTION
+              <div className="font-heading text-lg font-semibold text-foreground">
+                ecomguru
               </div>
-              <div className="text-xs text-muted-foreground">Designed for work</div>
+              <div className="text-xs text-muted-foreground">Smarter shopping</div>
             </Link>
 
             {/* Desktop Navigation */}

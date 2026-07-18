@@ -57,6 +57,24 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
   }
 
   const relatedProducts = getRelatedProducts(product.id, 3)
+  const productImages = product.images.length > 0 ? product.images : ['/products/tech-organizer-pro.png']
+  const productSpecs = {
+    ...(product.materials?.length ? { Materials: product.materials.join(', ') } : {}),
+    ...(product.dimensions
+      ? {
+          Dimensions: [
+            product.dimensions.length,
+            product.dimensions.width,
+            product.dimensions.height,
+          ]
+            .filter(Boolean)
+            .join(' x ') + (product.dimensions.unit ? ` ${product.dimensions.unit}` : ''),
+        }
+      : {}),
+    ...(product.dimensions?.weight ? { Weight: `${product.dimensions.weight} kg` } : {}),
+    ...(product.warranty ? { Warranty: product.warranty } : {}),
+    ...(product.careInstructions ? { Care: product.careInstructions } : {}),
+  }
 
   return (
     <div className="py-12 bg-background">
@@ -79,7 +97,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
           <div>
             <div className="mb-4 bg-muted rounded-lg aspect-square flex items-center justify-center overflow-hidden">
               <Image
-                src={product.image || '/products/tech-organizer-pro.png'}
+                src={productImages[currentImageIndex] || productImages[0]}
                 alt={product.name}
                 width={500}
                 height={500}
@@ -87,7 +105,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
               />
             </div>
             <div className="grid grid-cols-4 gap-2">
-              {[product.image, ...product.images || []].map((img, idx) => (
+              {productImages.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentImageIndex(idx)}
@@ -133,8 +151,8 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
             <div className="mb-6">
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl font-bold text-foreground">{formatPrice(product.price)}</span>
-                {product.originalPrice && (
-                  <span className="text-lg text-muted-foreground line-through">{formatPrice(product.originalPrice)}</span>
+                {product.compareAtPrice && (
+                  <span className="text-lg text-muted-foreground line-through">{formatPrice(product.compareAtPrice)}</span>
                 )}
               </div>
             </div>
@@ -218,11 +236,11 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
         </div>
 
         {/* Specs */}
-        {product.specs && (
+        {Object.keys(productSpecs).length > 0 && (
           <div className="mb-16">
             <h2 className="text-2xl font-bold text-foreground mb-6">Specifications</h2>
-            <Accordion type="single" collapsible>
-              {Object.entries(product.specs).map(([key, value]) => (
+            <Accordion>
+              {Object.entries(productSpecs).map(([key, value]) => (
                 <AccordionItem key={key} value={key}>
                   <AccordionTrigger>{key}</AccordionTrigger>
                   <AccordionContent>{value as string}</AccordionContent>
@@ -248,7 +266,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
                       <span key={i} className="text-sm">★</span>
                     ))}
                   </div>
-                  <p className="text-muted-foreground">{review.text}</p>
+                  <p className="text-muted-foreground">{review.content}</p>
                 </div>
               ))}
             </div>

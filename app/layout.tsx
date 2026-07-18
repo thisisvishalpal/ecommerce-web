@@ -1,15 +1,25 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import { Geist } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "FORM & FUNCTION | Designed for work. Built for movement.",
-  description: "Premium desk and travel accessories designed for professionals who value quality and functionality.",
+  title: "ecomguru | Smarter shopping for modern living.",
+  description: "Premium products curated for professionals who value quality, functionality, and timeless design.",
 }
 
 export default function RootLayout({
@@ -18,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
+    <html lang="en" className={cn("font-sans", manrope.variable, fraunces.variable)}>
       <body className="bg-background">
         <Header />
         <main className="min-h-screen">

@@ -222,10 +222,9 @@ export default function ProductsPage() {
 
               {/* Mobile Filter Button */}
               <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
-                <SheetTrigger asChild className="lg:hidden">
-                  <Button variant="outline" size="icon">
-                    <SlidersHorizontal className="w-4 h-4" />
-                  </Button>
+                <SheetTrigger className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border bg-background hover:bg-muted transition-colors">
+                  <SlidersHorizontal className="w-4 h-4" />
+                  <span className="sr-only">Open filters</span>
                 </SheetTrigger>
                 <SheetContent side="left" className="w-80">
                   <div className="mt-6">

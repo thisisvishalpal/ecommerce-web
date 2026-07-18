@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { Suspense, useState, useMemo } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Container } from '@/components/layout/Container'
 import { ProductCard } from '@/components/product/ProductCard'
@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { products } from '@/lib/storefront'
 import { Search as SearchIcon, X } from 'lucide-react'
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams()
   const initialQuery = searchParams.get('q') || ''
   const [query, setQuery] = useState(initialQuery)
@@ -97,5 +97,21 @@ export default function SearchPage() {
         )}
       </Container>
     </div>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="py-12 bg-background min-h-screen">
+          <Container>
+            <p className="text-muted-foreground">Loading search...</p>
+          </Container>
+        </div>
+      }
+    >
+      <SearchPageContent />
+    </Suspense>
   )
 }

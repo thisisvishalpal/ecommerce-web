@@ -139,8 +139,8 @@ export function Footer() {
         <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo and Tagline */}
           <div>
-            <h3 className="font-bold text-lg">FORM & FUNCTION</h3>
-            <p className="text-sm text-muted-foreground">Designed for work. Built for movement.</p>
+            <h3 className="font-bold text-lg">ecomguru</h3>
+            <p className="text-sm text-muted-foreground">Smarter shopping for modern living.</p>
           </div>
 
           {/* Social Links */}
@@ -172,7 +172,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} FORM & FUNCTION. All rights reserved.
+          © {new Date().getFullYear()} ecomguru. All rights reserved.
         </div>
       </div>
     </footer>

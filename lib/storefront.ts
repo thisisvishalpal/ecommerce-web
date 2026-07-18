@@ -340,7 +340,7 @@ export const testimonials: Testimonial[] = [
     id: 't-1',
     author: 'Priya Singh',
     role: 'Product Designer',
-    content: 'FORM & FUNCTION products have completely transformed my workspace. The quality and design are unmatched.',
+    content: 'ecomguru products have completely transformed my workspace. The quality and design are unmatched.',
     rating: 5,
     verified: true,
   },

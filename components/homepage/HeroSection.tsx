@@ -17,12 +17,12 @@ export function HeroSection() {
           <div className="max-w-xl">
             <div className="mb-8 inline-block">
               <span className="text-xs font-semibold tracking-widest text-primary uppercase px-4 py-2 bg-primary/10 rounded-full">
-                Welcome to FORM & FUNCTION
+                Welcome to ecomguru
               </span>
             </div>
 
             <h1 className="mb-6 text-foreground text-balance text-5xl lg:text-6xl font-bold leading-tight">
-              Designed for work. Built for movement.
+              Smarter shopping for modern living.
             </h1>
 
             <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
