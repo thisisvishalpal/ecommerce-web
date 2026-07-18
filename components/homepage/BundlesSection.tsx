@@ -1,0 +1,61 @@
+import Link from 'next/link'
+import Image from 'next/image'
+import { Container } from '@/components/layout/Container'
+import { Button } from '@/components/ui/button'
+import { bundles, formatPrice } from '@/lib/storefront'
+import { ArrowRight } from 'lucide-react'
+
+export function BundlesSection() {
+  return (
+    <section className="py-20 bg-muted">
+      <Container>
+        <div className="mb-12">
+          <span className="text-xs font-semibold tracking-widest text-primary uppercase">Save More</span>
+          <h2 className="text-4xl font-bold mt-2 text-foreground">Curated Bundles</h2>
+          <p className="text-muted-foreground mt-4 max-w-2xl">
+            Get everything you need at an unbeatable price. Our expertly curated bundles help you save while getting the perfect combination.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {bundles.map((bundle) => (
+            <div key={bundle.id} className="bg-background rounded-sm overflow-hidden border border-border group cursor-pointer hover:shadow-subtle transition-shadow">
+              <Link href={`/products?bundle=${bundle.id}`}>
+                <div className="relative overflow-hidden bg-muted h-64">
+                  <Image
+                    src={bundle.image}
+                    alt={bundle.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-sm text-sm font-semibold">
+                    Save {formatPrice(bundle.savings)}
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{bundle.name}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">{bundle.description}</p>
+
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-2xl font-bold text-foreground">
+                      {formatPrice(bundle.bundlePrice)}
+                    </span>
+                    <span className="text-sm text-muted-foreground line-through">
+                      {formatPrice(bundle.originalPrice)}
+                    </span>
+                  </div>
+
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+                    View Bundle <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  )
+}
