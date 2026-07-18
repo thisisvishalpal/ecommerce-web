@@ -17,9 +17,9 @@ export const products: Product[] = [
     badge: 'Bestseller',
     isFeatured: true,
     images: [
-      'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1594787318286-3d835c1cab83?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1000&q=80',
+      '/products/tech-organizer-pro.png',
+      '/products/tech-organizer-pro.png',
+      '/products/tech-organizer-pro.png',
     ],
     colors: [
       { name: 'Natural', hex: '#c4946c', inStock: true },
@@ -90,8 +90,8 @@ export const products: Product[] = [
     badge: 'New',
     isFeatured: true,
     images: [
-      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=80',
+      '/products/laptop-sleeve.png',
+      '/products/laptop-sleeve.png',
     ],
     colors: [
       { name: 'Navy', hex: '#1a3a4a', inStock: true },
@@ -134,7 +134,7 @@ export const products: Product[] = [
     reviewCount: 201,
     inStock: true,
     images: [
-      'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=1000&q=80',
+      '/products/cable-organizer.png',
     ],
     colors: [
       { name: 'Black', hex: '#1f1f1f', inStock: true },
@@ -164,7 +164,7 @@ export const products: Product[] = [
     inStock: true,
     isFeatured: true,
     images: [
-      'https://images.unsplash.com/photo-1611532854597-c996faeb801a?auto=format&fit=crop&w=1000&q=80',
+      '/products/desk-pad.png',
     ],
     colors: [
       { name: 'Natural Leather', hex: '#c4946c', inStock: true },
@@ -194,7 +194,7 @@ export const products: Product[] = [
     reviewCount: 67,
     inStock: true,
     images: [
-      'https://images.unsplash.com/photo-1589939705882-c6aa49432e0f?auto=format&fit=crop&w=1000&q=80',
+      '/products/cable-organizer.png',
     ],
     colors: [
       { name: 'Natural Wood', hex: '#d4a574', inStock: true },
@@ -224,7 +224,7 @@ export const products: Product[] = [
     reviewCount: 145,
     inStock: true,
     images: [
-      'https://images.unsplash.com/photo-1516321318423-f06f70504c11?auto=format&fit=crop&w=1000&q=80',
+      '/products/monitor-arm.png',
     ],
     colors: [
       { name: 'Aluminum Silver', hex: '#a9a9a9', inStock: true },
@@ -255,7 +255,7 @@ export const products: Product[] = [
     reviewCount: 98,
     inStock: true,
     images: [
-      'https://images.unsplash.com/photo-1625948515291-69613efd103f?auto=format&fit=crop&w=1000&q=80',
+      '/products/wireless-charger.png',
     ],
     colors: [
       { name: 'Space Gray', hex: '#56564f', inStock: true },
@@ -281,7 +281,7 @@ export const categories: Category[] = [
     name: 'Desk Accessories',
     slug: 'desk-accessories',
     description: 'Organize your workspace in style',
-    image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=1000&q=80',
+    image: '/categories/desk-accessories.png',
     featured: true,
   },
   {
@@ -289,7 +289,7 @@ export const categories: Category[] = [
     name: 'Travel Gear',
     slug: 'travel-gear',
     description: 'Adventure-ready accessories',
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=80',
+    image: '/products/traveler-backpack.png',
     featured: true,
   },
   {
@@ -297,7 +297,7 @@ export const categories: Category[] = [
     name: 'Tech Accessories',
     slug: 'tech-accessories',
     description: 'Stay connected and charged',
-    image: 'https://images.unsplash.com/photo-1625948515291-69613efd103f?auto=format&fit=crop&w=1000&q=80',
+    image: '/products/wireless-charger.png',
     featured: true,
   },
 ]
@@ -311,7 +311,7 @@ export const bundles: Bundle[] = [
     originalPrice: 7297,
     bundlePrice: 5999,
     savings: 1298,
-    image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=1000&q=80',
+    image: '/products/bundle-workspace.png',
   },
   {
     id: 'bundle-2',
@@ -321,7 +321,7 @@ export const bundles: Bundle[] = [
     originalPrice: 4398,
     bundlePrice: 3499,
     savings: 899,
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=80',
+    image: '/products/bundle-travel-essentials.png',
   },
   {
     id: 'bundle-3',
@@ -331,7 +331,7 @@ export const bundles: Bundle[] = [
     originalPrice: 2697,
     bundlePrice: 1999,
     savings: 698,
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f70504c11?auto=format&fit=crop&w=1000&q=80',
+    image: '/products/bundle-tech-accessories.png',
   },
 ]
 
