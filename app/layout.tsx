@@ -4,6 +4,7 @@ import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { RouteScrollRestoration } from "@/components/layout/RouteScrollRestoration";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", montserrat.variable)}>
       <body className="bg-background">
+        <RouteScrollRestoration />
         <Header />
         <main className="min-h-screen">
           {children}

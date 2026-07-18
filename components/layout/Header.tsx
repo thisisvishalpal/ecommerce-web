@@ -5,9 +5,15 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { ChevronDown, Menu, Search, User, Heart, ShoppingBag } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { cn } from '@/lib/utils'
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isShopOpen, setIsShopOpen] = useState(false)
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }
 
   const mobileNavLinks = [
     { label: 'Shop All', href: '/products', description: 'Browse the complete catalog' },
@@ -54,7 +60,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 gap-4">
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/" className="flex-shrink-0" onClick={scrollToTop}>
               <div className="font-heading text-lg font-semibold uppercase text-foreground">
                 ECOMGURU
               </div>
@@ -63,23 +69,34 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
-              <div className="group relative">
+              <div
+                className="relative"
+                onMouseEnter={() => setIsShopOpen(true)}
+                onMouseLeave={() => setIsShopOpen(false)}
+                onFocus={() => setIsShopOpen(true)}
+              >
                 <Link
                   href="/products"
                   className="flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-primary"
+                  onClick={() => setIsShopOpen(false)}
                 >
                   Shop
-                  <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
+                  <ChevronDown className={cn('h-4 w-4 transition-transform', isShopOpen && 'rotate-180')} />
                 </Link>
 
-                <div className="invisible absolute left-1/2 top-full z-50 w-[680px] -translate-x-1/2 pt-5 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div
+                  className={cn(
+                    'invisible absolute left-1/2 top-full z-50 w-[680px] -translate-x-1/2 pt-5 opacity-0 transition-all duration-150',
+                    isShopOpen && 'visible opacity-100'
+                  )}
+                >
                   <div className="rounded-sm border border-border bg-card p-4 shadow-lg">
                     <div className="mb-3 flex items-center justify-between border-b border-border pb-3">
                       <div>
                         <p className="text-sm font-semibold text-foreground">Shop Collections</p>
                         <p className="text-xs text-muted-foreground">Browse by workflow, travel, or ready-made kits.</p>
                       </div>
-                      <Link href="/products" className="text-xs font-semibold text-primary hover:underline">
+                      <Link href="/products" className="text-xs font-semibold text-primary hover:underline" onClick={() => setIsShopOpen(false)}>
                         View all
                       </Link>
                     </div>
@@ -90,6 +107,7 @@ export function Header() {
                           key={item.href}
                           href={item.href}
                           className="group/item overflow-hidden rounded-sm border border-border bg-background transition-colors hover:border-primary"
+                          onClick={() => setIsShopOpen(false)}
                         >
                           <div className="relative h-28 bg-muted">
                             <Image

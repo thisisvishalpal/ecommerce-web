@@ -9,6 +9,7 @@ interface ResponsiveCarouselProps {
   className?: string
   gridClassName?: string
   itemClassName?: string
+  desktopScrollable?: boolean
 }
 
 export function ResponsiveCarousel({
@@ -17,6 +18,7 @@ export function ResponsiveCarousel({
   className,
   gridClassName,
   itemClassName,
+  desktopScrollable = false,
 }: ResponsiveCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const normalizeTimerRef = useRef<number | null>(null)
@@ -90,7 +92,8 @@ export function ResponsiveCarousel({
         aria-label={ariaLabel}
         onScroll={scheduleLoopNormalization}
         className={cn(
-          'landing-carousel -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:overflow-visible md:px-0 md:pb-0',
+          'landing-carousel -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:mx-0 md:px-0',
+          desktopScrollable ? 'md:pb-2' : 'md:grid md:overflow-visible md:pb-0',
           gridClassName
         )}
       >

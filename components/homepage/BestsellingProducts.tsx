@@ -26,11 +26,11 @@ export function BestsellingProducts() {
 
         <ResponsiveCarousel
           ariaLabel="Bestselling products"
-          gridClassName="md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8"
-          itemClassName="min-w-[88%] sm:min-w-[46%]"
+          desktopScrollable
+          itemClassName="min-w-[88%] sm:min-w-[46%] md:min-w-[18rem] lg:min-w-[20rem]"
         >
           {bestsellers.map((product) => (
-            <ProductCard key={product.id} product={product} compactMobile />
+            <ProductCard key={product.id} product={product} compactMobile minimal />
           ))}
         </ResponsiveCarousel>
 
