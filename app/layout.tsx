@@ -1,19 +1,13 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import { Fraunces, Manrope } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
-const manrope = Manrope({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -28,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", manrope.variable, fraunces.variable)}>
+    <html lang="en" className={cn("font-sans", montserrat.variable)}>
       <body className="bg-background">
         <Header />
         <main className="min-h-screen">
