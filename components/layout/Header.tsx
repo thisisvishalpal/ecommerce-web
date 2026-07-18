@@ -76,10 +76,8 @@ export function Header() {
 
               {/* Mobile Menu Button */}
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                <SheetTrigger asChild className="lg:hidden">
-                  <button className="p-2 hover:bg-muted rounded transition-colors lg:hidden">
-                    <Menu className="w-5 h-5 text-foreground" />
-                  </button>
+                <SheetTrigger className="lg:hidden p-2 hover:bg-muted rounded transition-colors">
+                  <Menu className="w-5 h-5 text-foreground" />
                 </SheetTrigger>
                 <SheetContent side="left" className="w-64">
                   <div className="flex flex-col gap-6 mt-8">
