@@ -4,11 +4,10 @@ import { useEffect, useState, useMemo } from 'react'
 import { Container } from '@/components/layout/Container'
 import { ProductCard } from '@/components/product/ProductCard'
 import { Button } from '@/components/ui/button'
-import { Select } from '@/components/ui/select'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { products } from '@/lib/storefront'
-import { SlidersHorizontal, X } from 'lucide-react'
+import { SlidersHorizontal } from 'lucide-react'
 
 type SortOption = 'featured' | 'bestselling' | 'newest' | 'price-low' | 'price-high' | 'rating'
 
@@ -110,12 +109,12 @@ export default function ProductsPage() {
   }
 
   const FilterPanel = () => (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Category Filter */}
-      <div>
-        <h3 className="font-semibold text-foreground mb-3">Category</h3>
-        <div className="space-y-2">
-          <label className="flex items-center gap-2 cursor-pointer">
+      <div className="rounded-sm border border-border bg-background p-4">
+        <h3 className="font-semibold text-foreground mb-4">Category</h3>
+        <div className="space-y-3">
+          <label className="flex cursor-pointer items-center gap-3 rounded-sm p-2 transition-colors hover:bg-muted">
             <Checkbox
               checked={selectedCategory === 'all'}
               onCheckedChange={() => setSelectedCategory('all')}
@@ -123,7 +122,7 @@ export default function ProductsPage() {
             <span className="text-sm">All Products</span>
           </label>
           {categories.map((cat) => (
-            <label key={cat} className="flex items-center gap-2 cursor-pointer">
+            <label key={cat} className="flex cursor-pointer items-center gap-3 rounded-sm p-2 transition-colors hover:bg-muted">
               <Checkbox
                 checked={selectedCategory === cat}
                 onCheckedChange={() => setSelectedCategory(cat)}
@@ -135,14 +134,14 @@ export default function ProductsPage() {
       </div>
 
       {/* Color Filter */}
-      <div>
-        <h3 className="font-semibold text-foreground mb-3">Color</h3>
+      <div className="rounded-sm border border-border bg-background p-4">
+        <h3 className="font-semibold text-foreground mb-4">Color</h3>
         <div className="flex flex-wrap gap-3">
           {allColors.map(([name, hex]) => (
             <button
               key={name}
               onClick={() => toggleColor(name)}
-              className={`w-8 h-8 rounded-full border-2 transition-all ${
+              className={`h-9 w-9 rounded-full border-2 transition-all ${
                 selectedColors.includes(name)
                   ? 'border-foreground ring-2 ring-primary'
                   : 'border-border'
@@ -155,17 +154,17 @@ export default function ProductsPage() {
       </div>
 
       {/* Price Range */}
-      <div>
-        <h3 className="font-semibold text-foreground mb-3">Price Range</h3>
-        <div className="space-y-3">
-          <div className="flex gap-2">
+      <div className="rounded-sm border border-border bg-background p-4">
+        <h3 className="font-semibold text-foreground mb-4">Price Range</h3>
+        <div className="space-y-4">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
             <input
               type="number"
               min="0"
               max="5000"
               value={priceRange[0]}
               onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
-              className="w-20 px-2 py-1 border border-border rounded text-sm"
+              className="h-10 min-w-0 rounded-sm border border-border bg-background px-3 text-sm outline-none focus:border-ring focus:ring-3 focus:ring-ring/20"
               placeholder="Min"
             />
             <span className="text-muted-foreground">-</span>
@@ -175,7 +174,7 @@ export default function ProductsPage() {
               max="5000"
               value={priceRange[1]}
               onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
-              className="w-20 px-2 py-1 border border-border rounded text-sm"
+              className="h-10 min-w-0 rounded-sm border border-border bg-background px-3 text-sm outline-none focus:border-ring focus:ring-3 focus:ring-ring/20"
               placeholder="Max"
             />
           </div>
@@ -241,12 +240,30 @@ export default function ProductsPage() {
                   <SlidersHorizontal className="w-4 h-4" />
                   <span className="sr-only">Open filters</span>
                 </SheetTrigger>
-                <SheetContent side="left" className="w-80">
-                  <div className="mt-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <h2 className="font-bold text-lg">Filters</h2>
+                <SheetContent side="right" className="w-[min(24rem,100vw)] overflow-y-auto px-6 py-6">
+                  <div className="flex min-h-full flex-col">
+                    <div className="border-b border-border pb-6 pr-10">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                        Product Filters
+                      </p>
+                      <h2 className="mt-2 text-xl font-semibold text-foreground">Refine Products</h2>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                        Narrow the catalog by category, color, and budget.
+                      </p>
                     </div>
-                    <FilterPanel />
+
+                    <div className="py-7">
+                      <FilterPanel />
+                    </div>
+
+                    <div className="mt-auto border-t border-border pt-5">
+                      <Button
+                        onClick={() => setIsFilterOpen(false)}
+                        className="w-full"
+                      >
+                        Show {filteredProducts.length} Products
+                      </Button>
+                    </div>
                   </div>
                 </SheetContent>
               </Sheet>

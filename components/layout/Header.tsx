@@ -10,11 +10,15 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const mobileNavLinks = [
-    { label: 'Shop', href: '/products' },
-    { label: 'Account', href: '/account' },
-    { label: 'Wishlist', href: '/wishlist' },
-    { label: 'Cart', href: '/cart' },
-    { label: 'About', href: '#' },
+    { label: 'Shop All', href: '/products', description: 'Browse the complete catalog' },
+    { label: 'About', href: '#', description: 'Learn more about ecomguru' },
+  ]
+
+  const mobileAccountLinks = [
+    { label: 'Search', href: '/search', description: 'Find products quickly' },
+    { label: 'Account', href: '/account', description: 'Profile, orders, addresses' },
+    { label: 'Wishlist', href: '/wishlist', description: 'Saved products' },
+    { label: 'Cart', href: '/cart', description: 'Review your bag' },
   ]
 
   const shopMenuItems = [
@@ -116,8 +120,8 @@ export function Header() {
               </Link>
             </nav>
 
-            {/* Right Icons */}
-            <div className="flex items-center gap-3 lg:gap-4">
+            {/* Desktop Icons */}
+            <div className="hidden items-center gap-3 lg:flex lg:gap-4">
               {/* Search */}
               <button className="p-2 hover:bg-muted rounded transition-colors">
                 <Search className="w-5 h-5 text-foreground" />
@@ -141,27 +145,101 @@ export function Header() {
                 </span>
               </Link>
 
-              {/* Mobile Menu Button */}
-              <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                <SheetTrigger className="lg:hidden p-2 hover:bg-muted rounded transition-colors">
-                  <Menu className="w-5 h-5 text-foreground" />
-                </SheetTrigger>
-                <SheetContent side="left" className="w-64">
-                  <div className="flex flex-col gap-6 mt-8">
-                    {mobileNavLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="text-base font-medium text-foreground hover:text-primary transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </SheetContent>
-              </Sheet>
             </div>
+
+            {/* Mobile Menu Button */}
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger className="lg:hidden p-2 hover:bg-muted rounded transition-colors">
+                <Menu className="w-5 h-5 text-foreground" />
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[min(24rem,100vw)] overflow-y-auto px-6 py-6">
+                <div className="flex min-h-full flex-col">
+                  <div className="border-b border-border pb-6 pr-10">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                      Navigation
+                    </p>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Shop, account, and saved items in one clean menu.
+                    </p>
+                  </div>
+
+                  <div className="space-y-8 py-7">
+                    <div>
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                        Header Links
+                      </p>
+                      <div className="grid gap-2">
+                        {mobileNavLinks.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="rounded-sm border border-border bg-background p-4 transition-colors hover:border-primary hover:bg-muted"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            <span className="block text-sm font-semibold text-foreground">{link.label}</span>
+                            <span className="mt-1 block text-xs leading-5 text-muted-foreground">
+                              {link.description}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                        Categories
+                      </p>
+                      <div className="grid gap-2">
+                        {shopMenuItems.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="rounded-sm border border-border bg-background p-4 transition-colors hover:border-primary hover:bg-muted"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            <span className="block text-sm font-semibold text-foreground">{link.label}</span>
+                            <span className="mt-1 block text-xs leading-5 text-muted-foreground">
+                              {link.description}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                        Account Links
+                      </p>
+                      <div className="grid gap-2">
+                        {mobileAccountLinks.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="rounded-sm border border-border bg-background p-4 transition-colors hover:border-primary hover:bg-muted"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            <span className="block text-sm font-semibold text-foreground">{link.label}</span>
+                            <span className="mt-1 block text-xs leading-5 text-muted-foreground">
+                              {link.description}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-auto border-t border-border pt-5">
+                    <Link
+                      href="/products"
+                      className="block rounded-sm bg-primary px-4 py-3 text-center text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Start Shopping
+                    </Link>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </header>
