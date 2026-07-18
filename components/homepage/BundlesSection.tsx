@@ -7,47 +7,47 @@ import { ArrowRight } from 'lucide-react'
 
 export function BundlesSection() {
   return (
-    <section id="bundles" className="py-20 bg-muted">
+    <section id="bundles" className="py-16 lg:py-20 bg-muted/50">
       <Container>
         <div className="mb-12">
           <span className="text-xs font-semibold tracking-widest text-primary uppercase">Save More</span>
-          <h2 className="text-4xl font-bold mt-2 text-foreground">Curated Bundles</h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl">
+          <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-foreground">Curated Bundles</h2>
+          <p className="text-muted-foreground mt-4 max-w-2xl text-sm sm:text-base leading-relaxed">
             Get everything you need at an unbeatable price. Our expertly curated bundles help you save while getting the perfect combination.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {bundles.map((bundle) => (
-            <div key={bundle.id} className="bg-background rounded-sm overflow-hidden border border-border group cursor-pointer hover:shadow-subtle transition-shadow">
+            <div key={bundle.id} className="bg-background rounded overflow-hidden border border-border/60 group cursor-pointer hover:border-border hover:shadow-sm-premium transition-all duration-300">
               <Link href={`/products?bundle=${bundle.id}`}>
-                <div className="relative overflow-hidden bg-muted h-64">
+                <div className="relative overflow-hidden bg-muted h-56 sm:h-64">
                   <Image
                     src={bundle.image}
                     alt={bundle.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-sm text-sm font-semibold">
+                  <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1.5 rounded text-xs sm:text-sm font-semibold">
                     Save {formatPrice(bundle.savings)}
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{bundle.name}</h3>
-                  <p className="text-muted-foreground text-sm mb-4">{bundle.description}</p>
+                <div className="p-6 lg:p-8">
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2 line-clamp-2">{bundle.name}</h3>
+                  <p className="text-muted-foreground text-sm mb-5 line-clamp-2">{bundle.description}</p>
 
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-2xl font-bold text-foreground">
+                  <div className="flex items-baseline gap-2 mb-6">
+                    <span className="text-xl sm:text-2xl font-bold text-foreground">
                       {formatPrice(bundle.bundlePrice)}
                     </span>
-                    <span className="text-sm text-muted-foreground line-through">
+                    <span className="text-xs sm:text-sm text-muted-foreground line-through">
                       {formatPrice(bundle.originalPrice)}
                     </span>
                   </div>
 
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
                     View Bundle <ArrowRight className="w-4 h-4" />
                   </Button>
                 </div>

@@ -6,41 +6,37 @@ import { ArrowRight, Check } from 'lucide-react'
 
 export function HeroSection() {
   return (
-    <section className="relative bg-gradient-to-br from-muted via-background to-background overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10" />
-
+    <section className="relative bg-background overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         {/* Left Content */}
-        <div className="flex items-center justify-center lg:justify-start py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-center lg:justify-start py-16 lg:py-32 px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl">
-            <div className="mb-8 inline-block">
-              <span className="text-xs font-semibold tracking-widest text-primary uppercase px-4 py-2 bg-primary/10 rounded-full">
+            <div className="mb-6 inline-block">
+              <span className="text-xs font-semibold tracking-widest text-primary uppercase px-3 py-1.5 bg-primary/8 rounded">
                 Welcome to ecomguru
               </span>
             </div>
 
-            <h1 className="mb-6 text-foreground text-balance text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="mb-4 text-foreground text-balance text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
               Purposefully Designed.
             </h1>
 
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
               Premium desk and travel accessories crafted for professionals who demand quality, functionality, and timeless design.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Link href="/products">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 mb-12">
+              <Link href="/products" className="w-full sm:w-auto">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full h-11 px-6">
                   Shop Collection
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Link href="#featured">
+              <Link href="#featured" className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-border hover:bg-muted w-full sm:w-auto"
+                  className="border-border hover:bg-muted w-full h-11 px-6"
                 >
                   Explore Featured
                 </Button>
@@ -50,16 +46,16 @@ export function HeroSection() {
             {/* Trust Indicators */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Check className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium text-foreground">Free shipping on orders over ₹2,500</span>
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-sm text-foreground">Free shipping on orders over ₹2,500</span>
               </div>
               <div className="flex items-center gap-3">
-                <Check className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium text-foreground">30-day hassle-free returns</span>
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-sm text-foreground">30-day hassle-free returns</span>
               </div>
               <div className="flex items-center gap-3">
-                <Check className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium text-foreground">100% premium quality guaranteed</span>
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-sm text-foreground">100% premium quality guaranteed</span>
               </div>
             </div>
           </div>

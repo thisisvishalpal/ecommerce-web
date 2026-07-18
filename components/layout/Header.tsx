@@ -50,9 +50,9 @@ export function Header() {
       </div>
 
       {/* Main Header */}
-      <header className="w-full bg-background border-b border-border sticky top-0 z-40">
+      <header className="w-full bg-background border-b border-border sticky top-0 z-40 shadow-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-16 gap-4">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <div className="font-heading text-lg font-semibold uppercase text-foreground">
@@ -121,26 +121,26 @@ export function Header() {
             </nav>
 
             {/* Desktop Icons */}
-            <div className="hidden items-center gap-3 lg:flex lg:gap-4">
+            <div className="hidden items-center gap-1 lg:flex lg:gap-2">
               {/* Search */}
-              <button className="p-2 hover:bg-muted rounded transition-colors">
+              <button className="p-2.5 hover:bg-muted rounded transition-colors" aria-label="Search">
                 <Search className="w-5 h-5 text-foreground" />
               </button>
 
               {/* Account */}
-              <Link href="/account" className="p-2 hover:bg-muted rounded transition-colors">
+              <Link href="/account" className="p-2.5 hover:bg-muted rounded transition-colors" aria-label="Account">
                 <User className="w-5 h-5 text-foreground" />
               </Link>
 
               {/* Wishlist */}
-              <Link href="/wishlist" className="p-2 hover:bg-muted rounded transition-colors">
+              <Link href="/wishlist" className="p-2.5 hover:bg-muted rounded transition-colors" aria-label="Wishlist">
                 <Heart className="w-5 h-5 text-foreground" />
               </Link>
 
               {/* Cart */}
-              <Link href="/cart" className="p-2 hover:bg-muted rounded transition-colors relative">
+              <Link href="/cart" className="p-2.5 hover:bg-muted rounded transition-colors relative" aria-label="Cart">
                 <ShoppingBag className="w-5 h-5 text-foreground" />
-                <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
                   0
                 </span>
               </Link>
@@ -149,35 +149,32 @@ export function Header() {
 
             {/* Mobile Menu Button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger className="lg:hidden p-2 hover:bg-muted rounded transition-colors">
+              <SheetTrigger className="lg:hidden p-2.5 hover:bg-muted rounded transition-colors" aria-label="Open menu">
                 <Menu className="w-5 h-5 text-foreground" />
               </SheetTrigger>
-              <SheetContent side="right" className="w-[min(24rem,100vw)] overflow-y-auto px-6 py-6">
+              <SheetContent side="right" className="w-[min(24rem,100vw)] overflow-y-auto px-6 py-4">
                 <div className="flex min-h-full flex-col">
-                  <div className="border-b border-border pb-6 pr-10">
+                  <div className="border-b border-border pb-4 pr-10">
                     <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-                      Navigation
-                    </p>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Shop, account, and saved items in one clean menu.
+                      Menu
                     </p>
                   </div>
 
-                  <div className="space-y-8 py-7">
+                  <div className="space-y-6 py-6">
                     <div>
-                      <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                        Header Links
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">
+                        Shop
                       </p>
                       <div className="grid gap-2">
                         {mobileNavLinks.map((link) => (
                           <Link
                             key={link.href}
                             href={link.href}
-                            className="rounded-sm border border-border bg-background p-4 transition-colors hover:border-primary hover:bg-muted"
+                            className="rounded border border-border/50 bg-muted/30 p-3.5 transition-colors hover:border-primary hover:bg-muted"
                             onClick={() => setIsOpen(false)}
                           >
-                            <span className="block text-sm font-semibold text-foreground">{link.label}</span>
-                            <span className="mt-1 block text-xs leading-5 text-muted-foreground">
+                            <span className="block text-sm font-medium text-foreground">{link.label}</span>
+                            <span className="mt-0.5 block text-xs text-muted-foreground">
                               {link.description}
                             </span>
                           </Link>
@@ -186,19 +183,19 @@ export function Header() {
                     </div>
 
                     <div>
-                      <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                        Categories
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">
+                        Collections
                       </p>
                       <div className="grid gap-2">
                         {shopMenuItems.map((link) => (
                           <Link
                             key={link.href}
                             href={link.href}
-                            className="rounded-sm border border-border bg-background p-4 transition-colors hover:border-primary hover:bg-muted"
+                            className="rounded border border-border/50 bg-muted/30 p-3.5 transition-colors hover:border-primary hover:bg-muted"
                             onClick={() => setIsOpen(false)}
                           >
-                            <span className="block text-sm font-semibold text-foreground">{link.label}</span>
-                            <span className="mt-1 block text-xs leading-5 text-muted-foreground">
+                            <span className="block text-sm font-medium text-foreground">{link.label}</span>
+                            <span className="mt-0.5 block text-xs text-muted-foreground">
                               {link.description}
                             </span>
                           </Link>
@@ -207,19 +204,19 @@ export function Header() {
                     </div>
 
                     <div>
-                      <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                        Account Links
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">
+                        Account
                       </p>
                       <div className="grid gap-2">
                         {mobileAccountLinks.map((link) => (
                           <Link
                             key={link.href}
                             href={link.href}
-                            className="rounded-sm border border-border bg-background p-4 transition-colors hover:border-primary hover:bg-muted"
+                            className="rounded border border-border/50 bg-muted/30 p-3.5 transition-colors hover:border-primary hover:bg-muted"
                             onClick={() => setIsOpen(false)}
                           >
-                            <span className="block text-sm font-semibold text-foreground">{link.label}</span>
-                            <span className="mt-1 block text-xs leading-5 text-muted-foreground">
+                            <span className="block text-sm font-medium text-foreground">{link.label}</span>
+                            <span className="mt-0.5 block text-xs text-muted-foreground">
                               {link.description}
                             </span>
                           </Link>
@@ -228,10 +225,10 @@ export function Header() {
                     </div>
                   </div>
 
-                  <div className="mt-auto border-t border-border pt-5">
+                  <div className="mt-auto border-t border-border pt-4">
                     <Link
                       href="/products"
-                      className="block rounded-sm bg-primary px-4 py-3 text-center text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                      className="block rounded bg-primary px-4 py-3 text-center text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90"
                       onClick={() => setIsOpen(false)}
                     >
                       Start Shopping

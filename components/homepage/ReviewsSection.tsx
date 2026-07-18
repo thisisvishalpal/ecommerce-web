@@ -5,36 +5,36 @@ import { CheckCircle } from 'lucide-react'
 
 export function ReviewsSection() {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-16 lg:py-20 bg-background">
       <Container>
         <div className="mb-12">
           <span className="text-xs font-semibold tracking-widest text-primary uppercase">Customer Love</span>
-          <h2 className="text-4xl font-bold mt-2 text-foreground">What Our Customers Say</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-foreground">What Our Customers Say</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="bg-muted border-border p-6 flex flex-col">
+            <Card key={testimonial.id} className="bg-muted/40 border border-border/60 p-6 lg:p-8 flex flex-col hover:border-border/80 transition-colors">
               {/* Stars */}
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <span key={i} className="text-primary">★</span>
+                  <span key={i} className="text-primary text-lg">★</span>
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="text-foreground mb-4 flex-grow leading-relaxed italic">"{testimonial.content}"</p>
+              <p className="text-foreground mb-6 flex-grow leading-relaxed text-sm">{testimonial.content}</p>
 
               {/* Author Info */}
               <div>
                 <div className="flex items-center gap-2">
                   <div className="font-semibold text-foreground text-sm">{testimonial.author}</div>
                   {testimonial.verified && (
-                    <CheckCircle className="w-4 h-4 text-primary" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
                   )}
                 </div>
                 {testimonial.role && (
-                  <div className="text-xs text-muted-foreground">{testimonial.role}</div>
+                  <div className="text-xs text-muted-foreground mt-1">{testimonial.role}</div>
                 )}
               </div>
             </Card>

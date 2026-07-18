@@ -26,21 +26,21 @@ const trustPillars = [
 
 export function TrustPillars() {
   return (
-    <section className="py-20 bg-muted">
+    <section className="py-16 lg:py-20 bg-muted/50">
       <Container>
         <div className="mb-12">
           <span className="text-xs font-semibold tracking-widest text-primary uppercase">Why Choose Us</span>
-          <h2 className="text-4xl font-bold mt-2 text-foreground">We Take Pride in Every Detail</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-foreground">We Take Pride in Every Detail</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {trustPillars.map((pillar) => {
             const Icon = pillar.icon
             return (
-              <div key={pillar.title} className="bg-background rounded-sm p-6 border border-border">
-                <Icon className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-lg font-semibold text-foreground mb-2">{pillar.title}</h3>
-                <p className="text-muted-foreground text-sm">{pillar.description}</p>
+              <div key={pillar.title} className="bg-background rounded p-6 lg:p-8 border border-border/60 hover:border-border transition-colors">
+                <Icon className="w-8 h-8 text-primary mb-5" />
+                <h3 className="text-base lg:text-lg font-semibold text-foreground mb-2">{pillar.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{pillar.description}</p>
               </div>
             )
           })}
