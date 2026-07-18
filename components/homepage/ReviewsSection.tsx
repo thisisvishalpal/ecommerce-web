@@ -1,4 +1,5 @@
 import { Container } from '@/components/layout/Container'
+import { ResponsiveCarousel } from '@/components/layout/ResponsiveCarousel'
 import { Card } from '@/components/ui/card'
 import { testimonials } from '@/lib/storefront'
 import { CheckCircle } from 'lucide-react'
@@ -12,7 +13,11 @@ export function ReviewsSection() {
           <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-foreground">What Our Customers Say</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <ResponsiveCarousel
+          ariaLabel="Customer reviews"
+          gridClassName="md:grid-cols-2 lg:grid-cols-4 md:gap-6 lg:gap-8"
+          itemClassName="min-w-[78%] sm:min-w-[44%]"
+        >
           {testimonials.map((testimonial) => (
             <Card key={testimonial.id} className="bg-muted/40 border border-border/60 p-6 lg:p-8 flex flex-col hover:border-border/80 transition-colors">
               {/* Stars */}
@@ -39,7 +44,7 @@ export function ReviewsSection() {
               </div>
             </Card>
           ))}
-        </div>
+        </ResponsiveCarousel>
       </Container>
     </section>
   )

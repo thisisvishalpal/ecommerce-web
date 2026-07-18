@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Container } from '@/components/layout/Container'
+import { ResponsiveCarousel } from '@/components/layout/ResponsiveCarousel'
 import { categories } from '@/lib/storefront'
 import { ArrowRight } from 'lucide-react'
 
@@ -13,10 +14,14 @@ export function CategoryCards() {
           <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-foreground">Collections</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <ResponsiveCarousel ariaLabel="Shop collections" gridClassName="md:grid-cols-3 md:gap-6 lg:gap-8">
           {categories.map((category) => (
-            <Link key={category.id} href={`/products?category=${category.slug}`}>
-              <div className="group relative overflow-hidden rounded bg-muted aspect-square cursor-pointer">
+            <Link
+              key={category.id}
+              href={`/products?category=${category.slug}`}
+              className="group block h-full overflow-hidden rounded border border-border/60 bg-card transition-all duration-300 hover:border-border hover:shadow-sm-premium"
+            >
+              <div className="relative overflow-hidden bg-muted aspect-[4/3]">
                 <Image
                   src={category.image}
                   alt={category.name}
@@ -24,19 +29,22 @@ export function CategoryCards() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 group-hover:via-black/30 transition-all duration-500" />
+              </div>
 
-                <div className="absolute inset-0 flex flex-col items-start justify-end p-6 sm:p-8 text-white">
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2 leading-tight">{category.name}</h3>
-                  <p className="text-sm text-white/85 mb-6 line-clamp-2">{category.description}</p>
-                  <div className="flex items-center gap-2 text-sm font-semibold group-hover:translate-x-1 transition-transform duration-300">
-                    Explore <ArrowRight className="w-4 h-4" />
-                  </div>
+              <div className="flex min-h-36 flex-col justify-between p-5 sm:p-6">
+                <div>
+                  <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-primary">Collection</p>
+                  <h3 className="text-lg sm:text-xl font-semibold leading-tight text-card-foreground">{category.name}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground line-clamp-2">{category.description}</p>
+                </div>
+                <div className="mt-6 flex items-center justify-between border-t border-border/70 pt-4 text-sm font-semibold text-primary">
+                  <span>Explore</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </div>
             </Link>
           ))}
-        </div>
+        </ResponsiveCarousel>
       </Container>
     </section>
   )

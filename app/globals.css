@@ -49,6 +49,18 @@ body {
   margin: 0;
 }
 
+main:has(.newsletter-signup:last-child) + footer {
+  margin-top: 0;
+}
+
+.landing-carousel {
+  scrollbar-width: none;
+}
+
+.landing-carousel::-webkit-scrollbar {
+  display: none;
+}
+
 button,
 input {
   font: inherit;

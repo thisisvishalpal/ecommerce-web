@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Container } from '@/components/layout/Container'
-import { Button } from '@/components/ui/button'
+import { ResponsiveCarousel } from '@/components/layout/ResponsiveCarousel'
+import { buttonVariants } from '@/components/ui/button'
 import { bundles, formatPrice } from '@/lib/storefront'
 import { ArrowRight } from 'lucide-react'
 
@@ -17,7 +18,7 @@ export function BundlesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <ResponsiveCarousel ariaLabel="Curated bundles" gridClassName="md:grid-cols-3 md:gap-6 lg:gap-8">
           {bundles.map((bundle) => (
             <div key={bundle.id} className="bg-background rounded overflow-hidden border border-border/60 group cursor-pointer hover:border-border hover:shadow-sm-premium transition-all duration-300">
               <Link href={`/products?bundle=${bundle.id}`}>
@@ -47,14 +48,14 @@ export function BundlesSection() {
                     </span>
                   </div>
 
-                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+                  <span className={buttonVariants({ size: 'lg', className: 'w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2' })}>
                     View Bundle <ArrowRight className="w-4 h-4" />
-                  </Button>
+                  </span>
                 </div>
               </Link>
             </div>
           ))}
-        </div>
+        </ResponsiveCarousel>
       </Container>
     </section>
   )

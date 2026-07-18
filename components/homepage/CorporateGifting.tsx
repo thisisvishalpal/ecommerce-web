@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Container } from '@/components/layout/Container'
+import { ResponsiveCarousel } from '@/components/layout/ResponsiveCarousel'
 import { Button } from '@/components/ui/button'
 import { Check, Gift, Zap, Users, Sparkles } from 'lucide-react'
 
@@ -38,7 +39,7 @@ export function CorporateGifting() {
   return (
     <section className="py-16 lg:py-20 bg-background">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Column */}
           <div>
             <p className="text-xs sm:text-sm font-semibold tracking-widest text-primary uppercase mb-4">
@@ -78,7 +79,11 @@ export function CorporateGifting() {
           </div>
 
           {/* Right Column - Features Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+          <ResponsiveCarousel
+            ariaLabel="Corporate gifting features"
+            gridClassName="md:grid-cols-2 md:gap-4 lg:gap-6"
+            itemClassName="min-w-[78%] sm:min-w-[44%]"
+          >
             {features.map((feature, index) => {
               const Icon = feature.icon
               return (
@@ -92,20 +97,20 @@ export function CorporateGifting() {
                 </div>
               )
             })}
-          </div>
+          </ResponsiveCarousel>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12 mt-16 pt-12 lg:pt-16 border-t border-border">
-          <div className="text-center sm:text-left">
+        <div className="grid grid-cols-3 gap-3 sm:gap-8 lg:gap-12 mt-10 lg:mt-12">
+          <div className="rounded bg-muted/30 px-3 py-5 text-center sm:px-5 sm:py-6">
             <p className="text-2xl sm:text-3xl font-bold text-primary mb-1">500+</p>
             <p className="text-foreground text-sm">Corporate Clients</p>
           </div>
-          <div className="text-center sm:text-left">
+          <div className="rounded bg-muted/30 px-3 py-5 text-center sm:px-5 sm:py-6">
             <p className="text-2xl sm:text-3xl font-bold text-primary mb-1">50K+</p>
             <p className="text-foreground text-sm">Gifts Delivered</p>
           </div>
-          <div className="text-center sm:text-left">
+          <div className="rounded bg-muted/30 px-3 py-5 text-center sm:px-5 sm:py-6">
             <p className="text-2xl sm:text-3xl font-bold text-primary mb-1">4.9★</p>
             <p className="text-foreground text-sm">Client Rating</p>
           </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Container } from '@/components/layout/Container'
+import { ResponsiveCarousel } from '@/components/layout/ResponsiveCarousel'
 import { ProductCard } from '@/components/product/ProductCard'
 import { products } from '@/lib/storefront'
 import { Button } from '@/components/ui/button'
@@ -23,11 +24,15 @@ export function BestsellingProducts() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <ResponsiveCarousel
+          ariaLabel="Bestselling products"
+          gridClassName="md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8"
+          itemClassName="min-w-[88%] sm:min-w-[46%]"
+        >
           {bestsellers.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} compactMobile />
           ))}
-        </div>
+        </ResponsiveCarousel>
 
         <div className="mt-12 flex justify-center lg:hidden">
           <Link href="/products" className="w-full sm:w-auto">

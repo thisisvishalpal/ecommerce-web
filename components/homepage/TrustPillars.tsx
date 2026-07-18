@@ -1,4 +1,5 @@
 import { Container } from '@/components/layout/Container'
+import { ResponsiveCarousel } from '@/components/layout/ResponsiveCarousel'
 import { Truck, RotateCcw, Lock, Award } from 'lucide-react'
 
 const trustPillars = [
@@ -33,7 +34,11 @@ export function TrustPillars() {
           <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-foreground">We Take Pride in Every Detail</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <ResponsiveCarousel
+          ariaLabel="Why choose us"
+          gridClassName="md:grid-cols-2 lg:grid-cols-4 md:gap-6 lg:gap-8"
+          itemClassName="min-w-[78%] sm:min-w-[44%]"
+        >
           {trustPillars.map((pillar) => {
             const Icon = pillar.icon
             return (
@@ -44,7 +49,7 @@ export function TrustPillars() {
               </div>
             )
           })}
-        </div>
+        </ResponsiveCarousel>
       </Container>
     </section>
   )

@@ -133,6 +133,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 201,
     inStock: true,
+    badge: 'Bestseller',
     images: [
       '/products/cable-organizer.png',
     ],
@@ -162,6 +163,7 @@ export const products: Product[] = [
     rating: 4.9,
     reviewCount: 156,
     inStock: true,
+    badge: 'Bestseller',
     isFeatured: true,
     images: [
       '/products/desk-pad.png',
@@ -223,6 +225,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 145,
     inStock: true,
+    badge: 'Bestseller',
     images: [
       '/products/monitor-arm.png',
     ],
@@ -254,6 +257,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 98,
     inStock: true,
+    badge: 'Bestseller',
     images: [
       '/products/wireless-charger.png',
     ],
