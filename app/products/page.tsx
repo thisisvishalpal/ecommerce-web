@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { Container } from '@/components/layout/Container'
 import { ProductCard } from '@/components/product/ProductCard'
 import { Button } from '@/components/ui/button'
@@ -12,12 +12,27 @@ import { SlidersHorizontal, X } from 'lucide-react'
 
 type SortOption = 'featured' | 'bestselling' | 'newest' | 'price-low' | 'price-high' | 'rating'
 
+const categoryParamMap: Record<string, string> = {
+  desk: 'Desk Accessories',
+  travel: 'Travel Gear',
+  tech: 'Tech Accessories',
+}
+
 export default function ProductsPage() {
   const [sortBy, setSortBy] = useState<SortOption>('featured')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedColors, setSelectedColors] = useState<string[]>([])
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000])
   const [isFilterOpen, setIsFilterOpen] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const category = params.get('category')
+
+    if (!category) return
+
+    setSelectedCategory(categoryParamMap[category] ?? category)
+  }, [])
 
   // Get unique categories
   const categories = useMemo(() => {

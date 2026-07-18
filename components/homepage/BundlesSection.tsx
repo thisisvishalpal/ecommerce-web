@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react'
 
 export function BundlesSection() {
   return (
-    <section className="py-20 bg-muted">
+    <section id="bundles" className="py-20 bg-muted">
       <Container>
         <div className="mb-12">
           <span className="text-xs font-semibold tracking-widest text-primary uppercase">Save More</span>
