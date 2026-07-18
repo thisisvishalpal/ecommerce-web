@@ -139,8 +139,8 @@ export function Footer() {
         <div className="border-t border-border pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Logo and Tagline */}
           <div>
-            <h3 className="font-bold text-lg">ecomguru</h3>
-            <p className="mt-1 text-sm text-muted-foreground">Smarter shopping for modern living.</p>
+            <h3 className="font-bold text-lg uppercase">ECOMGURU</h3>
+            <p className="mt-1 text-sm text-muted-foreground">Purposefully Designed</p>
           </div>
 
           {/* Social Links */}

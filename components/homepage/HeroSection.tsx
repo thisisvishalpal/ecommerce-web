@@ -22,7 +22,7 @@ export function HeroSection() {
             </div>
 
             <h1 className="mb-6 text-foreground text-balance text-5xl lg:text-6xl font-bold leading-tight">
-              Smarter shopping for modern living.
+              Purposefully Designed.
             </h1>
 
             <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">

@@ -55,10 +55,10 @@ export function Header() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
-              <div className="font-heading text-lg font-semibold text-foreground">
-                ecomguru
+              <div className="font-heading text-lg font-semibold uppercase text-foreground">
+                ECOMGURU
               </div>
-              <div className="text-xs text-muted-foreground">Smarter shopping</div>
+              <div className="text-xs text-muted-foreground">Purposefully Designed</div>
             </Link>
 
             {/* Desktop Navigation */}

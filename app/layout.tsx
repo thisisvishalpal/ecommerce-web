@@ -12,7 +12,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "ecomguru | Smarter shopping for modern living.",
+  title: "ECOMGURU | Purposefully Designed.",
   description: "Premium products curated for professionals who value quality, functionality, and timeless design.",
 }
 
